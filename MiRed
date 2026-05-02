@@ -1,0 +1,90 @@
+package practicas;
+import java.util.ArrayList;
+
+public class MiRed {
+	private ArrayList<Perfil> perfiles;
+	
+	//constructor
+	public MiRed() {
+		perfiles = new ArrayList<Perfil>();
+	}
+	
+	public void anadirPerfil(Perfil perfilNuevo) {
+		perfiles.add(perfilNuevo);
+		String idNuevo = "user" + perfiles.size()	+ 1;
+		perfilNuevo.setIdUsuario(idNuevo);
+		perfilNuevo.setURL("http://www.MiRed.com/" + idNuevo);
+	}
+	
+	/*
+	 * Este método es un bucles while que comprueba que el usuario existe, 
+	 * de esta manero podremos utilizar el resto de métodos que requieran buscar un usuario,
+	 * sin tener que repetir el codigo
+	 */
+	public Perfil buscarUsuario(String idBuscado) {
+		int i = 0;
+		boolean found = false;
+		Perfil ret = null;
+		while (i<perfiles.size() && !found) {
+			if (perfiles.get(i).getIdUsuario().equals(idBuscado)) {
+				ret = perfiles.get(i);
+				found = true;
+			}
+		}
+		return ret;
+	}
+	
+	//comprobar la contraseña
+	public boolean comprobarPassword(String idUsuario, String passwordBuscada) {
+		Perfil perfilBuscado = buscarUsuario(idUsuario);
+		if (perfilBuscado==null) {
+				System.out.println("No existe el usuario" + idUsuario);
+				return false;
+		}
+		if (perfilBuscado.getPassword().equals(passwordBuscada)) {
+				System.out.println("La contraseña es correcta");
+				return true;
+		}
+		else {
+				System.out.println("La contraseña es incorrecta");
+				return false;
+		}
+	}
+	
+	//ver los usuarios de la red
+	public void visualizarRed() {
+		System.out.println("Usuarios en la red:");
+		for (Perfil p : perfiles) {
+			System.out.println("	" + p.getIdUsuario() + ": " + p.getNombre());
+		}
+	}
+	
+	//ver los datos de un perfil
+	public void visualizarPerfil(String idUsuario) {
+		Perfil perfilBuscado = buscarUsuario(idUsuario);
+		if (perfilBuscado==null) {
+			System.out.println("No se ha encontrado el usuario" + idUsuario);
+		}
+		else {
+			perfilBuscado.imprimeInformacion();
+		}
+	}
+	
+	//se añadirá un post al perfil
+	public void anadirPost(String idUsuario, String texto) {
+		Perfil perfilBuscado = buscarUsuario (idUsuario);
+		if (perfilBuscado==null) {
+			System.out.println("No existe el usuario" + idUsuario);
+		}
+		else {
+			Post postNuevo = new Post();
+			postNuevo.setTexto(texto);
+			
+			
+			int numeroPost = perfilBuscado.getPosts().size() + 1;
+			postNuevo.setURL("http://www.MiRed.com/post/" + idUsuario + "." + numeroPost);
+			
+			perfilBuscado.anadirPost(postNuevo);
+		}
+	}
+}
