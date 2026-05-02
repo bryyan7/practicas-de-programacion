@@ -1,0 +1,56 @@
+package practicas;
+
+import java.util.Date;
+
+public class Biografia {
+	private Date fechaDeNacimiento;
+	private String aficiones;
+	private String profesion;
+	private String objetivosVitales;
+	
+	//constructor
+	public Biografia() {
+		this.aficiones="";
+		this.profesion="";
+		this.objetivosVitales="";
+	}
+	
+	//setters
+	public void setAficiones(String aficiones) {
+		this.aficiones = aficiones;
+	}
+	public void setProfesion(String profesion) {
+		this.profesion = profesion;
+	}
+	public void setObjetivosVitales(String objetivosVitales) {
+		this.objetivosVitales = objetivosVitales;
+	}
+	
+	public void setFechaDeNacimiento(Date fechaDeNacimiento) {
+		this.fechaDeNacimiento = fechaDeNacimiento;
+	}
+
+	//getters
+	public String getAficiones() {
+		return aficiones;
+	}
+	public String getProfesion() {
+		return profesion;
+	}
+	public String getObjetivosVitales() {
+		return objetivosVitales;
+	}
+
+	public Date getFechaDeNacimiento() {
+		return fechaDeNacimiento;
+	}
+	
+	//imprimir información
+	public void imprimeInformacion() {
+		System.out.println("	Fecha de nacimiento: " + fechaDeNacimiento);
+		System.out.println("        Aficiones: " + aficiones);
+		System.out.println("        Profesión: " + profesion);
+		System.out.println("        Objetivos Vitales: " + objetivosVitales);
+	}
+	
+}
