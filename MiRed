@@ -23,15 +23,12 @@ public class MiRed {
 	 */
 	public Perfil buscarUsuario(String idBuscado) {
 		int i = 0;
-		boolean found = false;
-		Perfil ret = null;
-		while (i<perfiles.size() && !found) {
+		while (i<perfiles.size()) {
 			if (perfiles.get(i).getIdUsuario().equals(idBuscado)) {
-				ret = perfiles.get(i);
-				found = true;
+				return perfiles.get(i);
 			}
 		}
-		return ret;
+		return null;
 	}
 	
 	//comprobar la contraseña
