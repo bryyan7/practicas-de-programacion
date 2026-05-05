@@ -1,0 +1,34 @@
+import java.util.Date;
+
+public class EjemploEtapa3 {
+
+    public static void main(String[] args) {
+
+        Perfil p1 = new Perfil("Pedro Gonzalez", "migatoluis0");
+
+        PerfilProfesional p2 = new PerfilProfesional("Juan Perez", "lalalala");
+
+        Biografia b = new Biografia();
+        Date fecha = new Date(94, 2, 1);
+        b.setFechaDeNacimiento(fecha);
+        b.setAficiones("Musica");
+        b.setProfesion("Albanil");
+        b.setObjetivosVitales("Recorrer el mundo");
+
+        p2.setBiografia(b);
+        p2.setCurriculum("Experiencia en multiples empresas");
+        p2.setOcupacion("Encargado de hormigonera en Construcciones S.L.");
+
+        MiRed r = new MiRed();
+        r.anadirPerfil(p1);
+        r.anadirPerfil(p2);
+
+        r.visualizarRed();
+        r.visualizarPerfil("user2");
+
+        r.anadirPost("user2", "Hoy me siento bien");
+        r.anadirPost("user2", "Hoy me siento mal");
+
+        r.visualizarPerfil("user2");
+    }
+}
