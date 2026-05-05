@@ -1,0 +1,32 @@
+public class PerfilProfesional extends Perfil{
+    private String curriculum;
+    private String ocupacion;
+    
+    public PerfilProfesional(String idUsuario, String password){
+        super(idUsuario, password);
+        this.curriculum="";
+        this.ocupacion="";
+    }
+    //setters
+    public void setCurriculum (String curriculumNuevo){
+        curriculum = curriculumNuevo;
+    }
+    public void setOcupacion (String empleoNuevo) {
+        ocupacion = empleoNuevo;
+    }
+    //getters
+    public String getCurriculum (){
+        return curriculum;
+    }
+    public String getOcupacion(){
+        return ocupacion;
+    }
+    /*
+     * este método imprime la info del perfil más sus datos de perfil profesional
+     */
+    public void imprimeInformacion(){
+        super.imprimeInformacion();
+        System.out.println("    Currículum: " + curriculum);
+        System.out.println("    Ocupación actual: " + ocupacion);
+    }
+}
