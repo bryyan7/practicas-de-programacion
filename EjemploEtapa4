@@ -32,7 +32,7 @@ public class EjemploEtapa4 {
         r.visualizarPerfil("user2");
         
         //a partir de está parte pertenece a la etapa 4
-        r.eliminarPost("user3", "http://www.miRed.com/post/user2.2.Hoy me siento mal");
+        r.eliminarPost("user2", "http://www.miRed.com/post/user2.2.Hoy me siento mal");
         
         r.visualizarPerfil("user2");
     }
