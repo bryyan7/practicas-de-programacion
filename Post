@@ -21,6 +21,6 @@ public class Post {
 	
 	//imprimir info
 	public void imprimeInformacion() {
-		System.out.println("		URL + texto");
+		System.out.println("		" + URL);
 	}
 }
