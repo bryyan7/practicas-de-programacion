@@ -65,7 +65,7 @@ public class MiRed{
             postNuevo.setTexto(texto);
             
             int numeroPost=perfilBuscado.getPosts().size()+1;
-            postNuevo.setURL("http://www.miRed.com/post/" + idUsuario + "."+ numeroPost);
+            postNuevo.setURL("http://www.miRed.com/post/" + idUsuario + "."+ numeroPost + "." + texto);
             
             perfilBuscado.anadirPost(postNuevo);
         }
@@ -79,31 +79,28 @@ public class MiRed{
             perfiles.remove(perfilBuscado);
         }
     }
-    public void eliminaarPost (String idUsuario, String URLBuscada){
+    public void eliminarPost (String idUsuario, String URLBuscada){
         Perfil perfilBuscado = buscarUsuario(idUsuario);
         if (perfilBuscado == null){
             System.out.println("No existe el usuario " + idUsuario);
             }
-        ArrayList<Post> posts = perfilBuscado.getPosts();
-        for ( int i = 0; i < posts.size(); i++){
-            if (posts.get(i).getURL().equals(URLBuscada)){
-                posts.remove(i);
+        else {
+            Post postBuscado = null;
+            for (Post p : perfilBuscado.getPosts()){
+                System.out.println("Comparando:");
+                System.out.println("URL del post: " + p.getURL());
+                System.out.println("URL buscada: " + URLBuscada);
+                if (p.getURL().equals(URLBuscada)){
+                    System.out.println("POST ENCONTRADO");
+                    postBuscado = p;
+                    break;
+                }
+            }
+            if (postBuscado !=null){
+                perfilBuscado.getPosts().remove(postBuscado);
             }
             else {
-            System.out.println("No existe el post " + URLBuscada);
-            }
-        }
-    }
-    public void eliminarPost (String idUsuario, String URLBuscada){
-        for (Perfil perfilBuscado: perfiles){
-            ArrayList<Post> posts = perfilBuscado.getPosts();
-            for (int i = 0; i<posts.size(); i++){
-                if (posts.get(i).getURL().equals(URLBuscada)){
-                    posts.remove(i);
-                }
-                else {
-                    System.out.println("No se ha encontrado el post " + URLBuscada);
-                }
+                System.out.println("No se ha encontrado el post " + URLBuscada);
             }
         }
     }
