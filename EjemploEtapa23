@@ -1,0 +1,65 @@
+import java.util.Date;
+
+public class EjemploEtapa23 {
+
+    public static void main(String[] args) {
+
+        Perfil p1 = new Perfil("Pedro Gonzalez", "pass1");
+        Biografia b = new Biografia();
+        Date fecha = new Date(74, 10, 17);
+        b.setFechaDeNacimiento(fecha);
+        b.setAficiones("los gatos");
+        b.setProfesion("Informatico");
+        b.setObjetivosVitales("Salvar animales");
+        p1.setBiografia(b);
+
+        Perfil p2 = new Perfil("Juan Perez", "lalalala");
+        Biografia b2 = new Biografia();
+        Date fecha2 = new Date(94, 2, 1);
+        b2.setFechaDeNacimiento(fecha2);
+        b2.setAficiones("Musica");
+        b2.setProfesion("Albanil");
+        b2.setObjetivosVitales("Recorrer el mundo");
+        p2.setBiografia(b2);
+
+        MiRed r = new MiRed();
+        r.anadirPerfil(p1);
+        r.anadirPerfil(p2);
+        r.visualizarRed();
+        
+        //etapa23
+        
+        //ejercicio 1
+        r.visualizarPerfil("user999");
+        
+        // ejercicio 2
+        boolean comprobacion2 = r.comprobarPassword("user1","mal");
+        
+        //ejercicio 3
+        boolean comprobacion3 = r.comprobarPassword("user1","pass1");
+
+        //ejercicio 4
+        r.anadirPost("user999", "Hola");
+        
+        //ejercicio 5
+        r.anadirPost("user1","Post 1");
+        r.anadirPost("user1","Post 2");
+        
+        //ejercicio 10
+        r.anadirPost("user1","");
+        //sigue el 5
+        r.visualizarPerfil("user1");
+        
+        //ejercicio 7
+        r.visualizarPerfil("user2");
+        
+        //ejercicio 8
+        Perfil p3=new Perfil("Pedro", "pass3");
+        r.anadirPerfil(p3);
+        r.visualizarRed();
+        
+        //ejercicio 10
+        r.anadirPost("user1","");
+        
+    }
+}
