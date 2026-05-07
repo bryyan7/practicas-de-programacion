@@ -5,15 +5,30 @@ public class MiRed{
     private int contadorId;
     
     public MiRed(){
-        perfiles= new ArrayList<Perfil>();
-        contadorId=1;
+        perfiles = new ArrayList<Perfil>();
+        contadorId = perfiles.size() +1;
+    }
+    public int buscarIdLibre(){
+        int i = 1;
+        boolean libre = false;
+        while (!libre){
+            libre = true;
+            for (Perfil p : perfiles){
+                if (p.getIdUsuario().equals("user" + i)){
+                    libre = false;
+                    i++;
+                    break;
+                }
+            }
+        }
+        return i;
     }
     public void anadirPerfil (Perfil perfilNuevo){
-        perfiles.add(perfilNuevo);
-        String idNuevo = "user"+ contadorId;
+        int idLibre = buscarIdLibre();
+        String idNuevo = "user" + idLibre;
         perfilNuevo.setIdUsuario(idNuevo);
         perfilNuevo.setURL("http://www.MiRed.com/" + idNuevo);
-        contadorId++;
+        perfiles.add(perfilNuevo);
     }
     public Perfil buscarUsuario(String idBuscado){
         int i=0;
@@ -26,7 +41,7 @@ public class MiRed{
         return null;
     }
     public boolean comprobarPassword(String idUsuario, String passwordBuscada){
-        Perfil perfilBuscado=buscarUsuario(idUsuario);
+        Perfil perfilBuscado = buscarUsuario(idUsuario);
         if (perfilBuscado==null){
             System.out.println("No existe el usuario " + idUsuario);
             return false;
@@ -61,10 +76,10 @@ public class MiRed{
             System.out.println("No existe el identificador de usuario " + idUsuario);
         }
         else{
-            Post postNuevo= new Post();
+            Post postNuevo = new Post();
             postNuevo.setTexto(texto);
             
-            int numeroPost=perfilBuscado.getPosts().size()+1;
+            int numeroPost = perfilBuscado.getPosts().size() +1;
             postNuevo.setURL("http://www.miRed.com/post/" + idUsuario + "."+ numeroPost + "." + texto);
             
             perfilBuscado.anadirPost(postNuevo);
